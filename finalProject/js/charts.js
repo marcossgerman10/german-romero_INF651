@@ -68,27 +68,48 @@ function updateAllCharts() {
 
 // Update Statistics
 function updateStats() {
-    const totalHabitsStat = document.getElementById('totalHabitsStat');
-    const totalStreaksStat = document.getElementById('totalStreaksStat');
-    const topHabitStat = document.getElementById('topHabitStat');
+    // Get the elements for each frequency category
+    const totalDailyHabitsStat = document.getElementById('totalDailyHabitsStat');
+    const totalWeeklyHabitsStat = document.getElementById('totalWeeklyHabitsStat');
+    const totalMonthlyHabitsStat = document.getElementById('totalMonthlyHabitsStat');
 
+    const totalDailyStreaksStat = document.getElementById('totalDailyStreaksStat');
+    const totalWeeklyStreaksStat = document.getElementById('totalWeeklyStreaksStat');
+    const totalMonthlyStreaksStat = document.getElementById('totalMonthlyStreaksStat');
 
-    if (typeof habits !== 'undefined' && habits.length > 0) {
+    const topDailyHabitStat = document.getElementById('topDailyHabitStat');
+    const topWeeklyHabitStat = document.getElementById('topWeeklyHabitStat');
+    const topMonthlyHabitStat = document.getElementById('topMonthlyHabitStat');
+
+    // Filter habits by frequency
+    const dailyHabits = habits.filter(habit => habit.frequency === 'daily');
+    const weeklyHabits = habits.filter(habit => habit.frequency === 'weekly');
+    const monthlyHabits = habits.filter(habit => habit.frequency === 'monthly');
+
+    // Calculate and update statistics for each frequency
+    updateFrequencyStats(dailyHabits, totalDailyHabitsStat, totalDailyStreaksStat, topDailyHabitStat);
+    updateFrequencyStats(weeklyHabits, totalWeeklyHabitsStat, totalWeeklyStreaksStat, topWeeklyHabitStat);
+    updateFrequencyStats(monthlyHabits, totalMonthlyHabitsStat, totalMonthlyStreaksStat, topMonthlyHabitStat);
+}
+
+// Helper function to update stats for a specific frequency
+function updateFrequencyStats(habits, totalHabitsElement, totalStreaksElement, topHabitElement) {
+    if (habits.length > 0) {
         // Update total habits
-        totalHabitsStat.textContent = habits.length;
+        totalHabitsElement.textContent = habits.length;
 
         // Update total streaks
         const totalStreaks = habits.reduce((total, habit) => total + habit.streak, 0);
-        totalStreaksStat.textContent = totalStreaks;
+        totalStreaksElement.textContent = totalStreaks;
 
         // Find the top completed habit
         const topHabit = habits.reduce((top, habit) => (habit.streak > (top?.streak || 0) ? habit : top), null);
-        topHabitStat.textContent = topHabit ? `${topHabit.name} (${topHabit.streak} streaks)` : 'None';
+        topHabitElement.textContent = topHabit ? `${topHabit.name} (${topHabit.streak} streaks)` : 'None';
     } else {
         // Reset stats if no habits exist
-        totalHabitsStat.textContent = '0';
-        totalStreaksStat.textContent = '0';
-        topHabitStat.textContent = 'None';
+        totalHabitsElement.textContent = '0';
+        totalStreaksElement.textContent = '0';
+        topHabitElement.textContent = 'None';
     }
 }
 

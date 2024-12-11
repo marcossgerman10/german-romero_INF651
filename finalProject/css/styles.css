@@ -67,6 +67,17 @@ main {
 canvas {
     max-width: 400px; /* Adjust the width as needed */
     max-height: 300px; /* Adjust the height as needed */
-    margin: 0 auto; /* Center the chart */
+    margin: 0; 
     display: block;
+}
+
+#chartSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align all charts to the left */
+    gap: 20px; /* Add spacing between charts */
+}
+
+#chartSection h2 {
+    margin-left: 0; /* Align headings to the left to match the charts */
 }
