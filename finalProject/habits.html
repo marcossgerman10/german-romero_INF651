@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker - Habits</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Habit Tracker</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="habits.html">Habits</a>
+            <a href="insights.html">Insights</a>
+            <a href="settings.html">Settings</a>
+        </nav>
+    </header>
+    <main>
+        <section id="tracker">
+            <h2>Track Your Habits</h2>
+            <input type="text" id="habitName" placeholder="Enter Habit Name">
+            <select id="habitFrequency">
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+            </select>
+            <button id="addHabit">Add Habit</button>
+        </section>
+        
+        <!-- Habit Management List -->
+        <section id="habit-management-section">
+            <h3>Manage Your Habits</h3>
+            <ul id="habitManagementList">
+                <!-- Habit items with Edit and Delete buttons will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
