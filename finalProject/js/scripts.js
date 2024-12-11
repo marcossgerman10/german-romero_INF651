@@ -7,6 +7,8 @@ const habitManagementList = document.getElementById('habitManagementList'); // F
 const totalHabits = document.getElementById('totalHabits'); // Stats on the home page
 const totalStreaks = document.getElementById('totalStreaks'); // Stats on the home page
 const addHabitButton = document.getElementById('addHabit'); // Add habit button
+const darkModeToggle = document.getElementById('darkMode'); // Activate dark mode
+
 
 // Track the current date
 let currentDate = new Date().toDateString(); // Store only the date part
@@ -192,6 +194,36 @@ function editHabit(index) {
 // Save Habits to localStorage
 function saveHabits() {
     localStorage.setItem('habits', JSON.stringify(habits));
+}
+
+// Function to apply dark mode
+function applyDarkMode(isDarkMode) {
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+}
+
+// Event listener for dark mode toggle
+if (darkModeToggle) {
+    // Initialize the checkbox state based on localStorage
+    const isDarkModeEnabled = localStorage.getItem('darkMode') === 'true';
+    darkModeToggle.checked = isDarkModeEnabled;
+    applyDarkMode(isDarkModeEnabled);
+
+    // Add event listener to toggle dark mode
+    darkModeToggle.addEventListener('change', () => {
+        const isChecked = darkModeToggle.checked;
+        applyDarkMode(isChecked);
+
+        // Save the user's preference to localStorage
+        localStorage.setItem('darkMode', isChecked);
+    });
+} else {
+    // If no toggle is found, apply dark mode based on localStorage
+    const isDarkModeEnabled = localStorage.getItem('darkMode') === 'true';
+    applyDarkMode(isDarkModeEnabled);
 }
 
 // Initialize the App

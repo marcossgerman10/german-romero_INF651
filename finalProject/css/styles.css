@@ -60,8 +60,20 @@ main {
     border-radius: 5px;
 }
 .dark-mode {
-    background-color: #333;
-    color: white;
+    background-color: #333; /* Dark background */
+    color: white; /* Light text color */
+}
+
+.dark-mode header, .dark-mode nav {
+    background-color: #444; /* Slightly lighter background for header/nav */
+}
+
+.dark-mode a {
+    color: #1e90ff; /* Bright link color */
+}
+
+.dark-mode a:hover {
+    color: #87cefa; /* Hover effect for links */
 }
 
 canvas {
