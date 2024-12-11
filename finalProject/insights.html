@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker - Insights</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+</head>
+<body>
+    <header>
+        <h1>Habit Tracker</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="habits.html">Habits</a>
+            <a href="insights.html">Insights</a>
+            <a href="settings.html">Settings</a>
+        </nav>
+    </header>
+    <main>
+        <section id="chartSection">
+            <h2>Daily Habit Progress</h2>
+            <canvas id="dailyChart"></canvas> <!-- Daily habits chart -->
+
+            <h2>Weekly Habit Progress</h2>
+            <canvas id="weeklyChart"></canvas> <!-- Weekly habits chart -->
+
+            <h2>Monthly Habit Progress</h2>
+            <canvas id="monthlyChart"></canvas> <!-- Monthly habits chart -->
+        </section>
+
+        <section id="statsSection">
+            <h2>Statistics</h2>
+            <p>Total Habits: <span id="totalHabitsStat">0</span></p>
+            <p>Total Streaks: <span id="totalStreaksStat">0</span></p>
+            <p>Top Completed Habit: <span id="topHabitStat">None</span></p>
+        </section>
+    </main>
+    <script src="js/scripts.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>
